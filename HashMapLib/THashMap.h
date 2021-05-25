@@ -23,7 +23,7 @@ public:
 
 protected:
     int Hash(TK k);
-    std::vector<std::vector<TNode<TK, TV> >> data;
+    std::vector<std::vector<TNode<TK, TV> > > data;
 };
 
 template <class TK, class TV>
