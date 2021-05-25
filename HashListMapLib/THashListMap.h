@@ -24,12 +24,12 @@ protected:
 };
 
 template <class TK, class TV>
-THashListNode<TK, TV>::THashListNode(TK k, TV v) : key(k), val(v), next(nullptr)
+THashListNode<TK, TV>::THashListNode(TK k, TV v) : key(k), val(v), next(NULL)
 {
 }
 
 template <class TK, class TV>
-THashListNode<TK, TV> ::THashListNode(const THashListNode& p) : key(p.k), val(p.v), next(nullptr)
+THashListNode<TK, TV> ::THashListNode(const THashListNode& p) : key(p.k), val(p.v), next(NULL)
 {
 }
 
@@ -39,7 +39,7 @@ THashListNode<TK, TV>& THashListNode<TK, TV> :: operator=(const THashListNode& p
     if (this != &p) {
         key = p.key;
         val = p.val;
-        next = nullptr;
+        next = NULL;
     }
     return *this;
 }
@@ -75,11 +75,11 @@ void THashListMap<TK, TV>::Resize(int newSize) {
     count = 0;
     mas = new THashListNode<TK, TV> * [size];
     for (int i = 0; i < size; i++)
-        mas[i] = nullptr;
+        mas[i] = NULL;
     for (int i = 0; i < oldSize; i++) {
         THashListNode<TK, TV>* cur = oldMas[i];
         THashListNode<TK, TV>* del;
-        while (cur != nullptr) {
+        while (cur != NULL) {
             Add(cur->key, cur->val);
             del = cur;
             cur = cur->next;
@@ -104,7 +104,7 @@ THashListMap<TK, TV>::THashListMap(int size_)
     else
         mas = new THashListNode<TK, TV> * [size];
     for (int i = 0; i < size; i++)
-        mas[i] = nullptr;
+        mas[i] = NULL;
     count = 0;
 }
 
@@ -134,7 +134,7 @@ THashListMap<TK, TV>::~THashListMap() {
     std::stack<THashListNode<TK, TV>*> st;
     for (int i = 0; i < size; i++) {
         THashListNode<TK, TV>* cur = mas[i];
-        while (cur != nullptr) {
+        while (cur != NULL) {
             st.push(cur);
             cur = cur->next;
         }
@@ -150,7 +150,7 @@ TV& THashListMap<TK, TV>::operator[](TK i)
 {
     int index = Hash(i) % size;
     THashListNode<TK, TV>* cur = mas[index];
-    if (cur == nullptr)
+    if (cur == NULL)
     {
         cur = new THashListNode<TK, TV>(i, TV{});
         mas[index] = cur;
@@ -166,7 +166,7 @@ TV& THashListMap<TK, TV>::operator[](TK i)
                 break;
             }
         }
-        if (cur != nullptr)
+        if (cur != NULL)
         {
             return cur->val;
         }
@@ -174,7 +174,7 @@ TV& THashListMap<TK, TV>::operator[](TK i)
         {
             cur = new THashListNode<TK, TV>();
             cur->key = i;
-            if (mas[index] == nullptr) {
+            if (mas[index] == NULL) {
                 mas[index] = cur;
             }
             else {
@@ -217,7 +217,7 @@ void THashListMap<TK, TV>::Delete(TK k)
     if (mas[ind] != 0)
     {
         THashListNode<TK, TV>* cur = mas[ind];
-        THashListNode<TK, TV>* prev = nullptr;
+        THashListNode<TK, TV>* prev = NULL;
         while (cur->key != k)
         {
             prev = cur;
@@ -225,7 +225,7 @@ void THashListMap<TK, TV>::Delete(TK k)
             if (cur == 0)
                 return;
         }
-        if (prev == nullptr) {
+        if (prev == NULL) {
             mas[ind] = cur->next;
         }
         else {

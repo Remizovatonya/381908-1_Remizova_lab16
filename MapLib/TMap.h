@@ -64,9 +64,9 @@ inline TMap<TK, TV>::TMap(const TMap<TK, TV>& p) {
 
 template <class TK, class TV>
 inline TMap<TK, TV>::~TMap() {
-	if (mas != nullptr)
+	if (mas != NULL)
 		delete[] mas;
-	mas = nullptr;
+	mas = NULL;
 	size = 0;
 	count = 0;
 }
@@ -137,9 +137,9 @@ inline bool TMap<TK, TV>::Load(std::string fileName)
 {
 	std::ifstream fin(fileName);
 	if (fin.is_open()) {
-		if (mas != nullptr) {
+		if (mas != NULL) {
 			delete[] mas;
-			mas = nullptr;
+			mas = NULL;
 		}
 		fin >> size >> count;
 		mas = new TNode<TK, TV>[size];
